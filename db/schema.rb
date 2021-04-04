@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_04_083540) do
+ActiveRecord::Schema.define(version: 2021_04_04_084018) do
 
   create_table "channels", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2021_04_04_083540) do
     t.string "author"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "channel_id", null: false
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
   end
 
+  add_foreign_key "messages", "channels"
 end
